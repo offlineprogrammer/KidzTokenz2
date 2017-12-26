@@ -1,0 +1,8 @@
+{
+  "name": "KidzTokenz2",
+  "app_id": "2d6ed7e8",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
