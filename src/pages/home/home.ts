@@ -1,16 +1,41 @@
-import { Component } from '@angular/core';
-import { NavController, ModalController,LoadingController } from 'ionic-angular';
-import { AddKidPage } from '../add-kid/add-kid';
+import {
+  Component
+} from '@angular/core';
+import {
+  NavController,
+  ModalController,
+  LoadingController
+} from 'ionic-angular';
+import {
+  AddKidPage
+} from '../add-kid/add-kid';
+import {
+  DataServiceProvider
+} from '../../providers/data-service/data-service';
+import {
+  Kid
+} from '../../models/kid';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  kids: Kid[] = [];
   constructor(public navCtrl: NavController,
     private modalController: ModalController,
-    private loadingCtrl: LoadingController) {
+    private loadingCtrl: LoadingController,
+    private dataService: DataServiceProvider) {
+
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+    this.dataService.getKids()
+      .then((response) => {
+        this.kids = response;
+        loader.dismiss()
+      });
 
   }
 
@@ -24,7 +49,7 @@ export class HomePage {
       // this.dataService.getKids()
       //   .then((response) => {
       //     this.kids = response;
-      //     loader.dismiss()
+      loader.dismiss()
       //   });
     });
     modal.present();

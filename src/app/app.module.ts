@@ -10,6 +10,7 @@ import { AddKidPage } from '../pages/add-kid/add-kid';
 import { UserDataProvider } from '../providers/user-data/user-data';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { DataServiceProvider } from '../providers/data-service/data-service';
 
 
 
@@ -42,7 +43,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserDataProvider
+    UserDataProvider,
+    DataServiceProvider
   ]
 })
 export class AppModule {}
