@@ -21,10 +21,8 @@
           <h2>
             {{item.name}}
           </h2>
-          <ion-badge color="secondary">{{item.tasksCount}} tasks</ion-badge>
-          <ion-avatar item-right>
-            <img src="{{item.tokenType}}">
-          </ion-avatar>
+          <ion-badge color="secondary">{{item.positives}} positives</ion-badge>
+          <ion-badge color="danger">{{item.negatives}} negatives</ion-badge>
           <ion-icon name='ios-arrow-forward' item-right></ion-icon>
         </ion-item>
       </ion-col>

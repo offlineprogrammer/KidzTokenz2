@@ -25,5 +25,16 @@ export class UserDataProvider {
     this.isStartup = false;
   }
 
+  getGuestUser(): Promise<boolean> {
+    return new Promise(resolve => {
+      this.storage.get('isGuestUser').then((val) => {
+        console.log('Your name is', val);
+        this.isGuestUser = val;
+        resolve(val);
+      })
+
+    });
+}
+
 
 }
