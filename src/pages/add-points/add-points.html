@@ -15,44 +15,50 @@
 
   <ion-card>
     <img src="./assets/imgs/logo.png" />
-
-    <!--  <img *ngIf="isGuestUser" src="{{oChild.childimage}}" class="child-background-image">
-              <img *ngIf="!isGuestUser" src="{{oChild.kidPhoto}}" class="child-background-image"> -->
-
     <ion-card-content>
       <ion-card-title>
         <div>{{oKid.name}}</div>
       </ion-card-title>
-      <p>
-        The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
-      </p>
+
     </ion-card-content>
   </ion-card>
 
-
-
-
-
-
-
-  <ion-item class="child-item">
+  <ion-grid>
     <ion-row>
-      <ion-col width-50>
-
-      </ion-col>
-      <ion-col width-50>
-
+      <ion-col>
+        <ion-item class="child-item">
+          <ion-thumbnail item-left>
+            <img src="./assets/imgs/logo.png" />
+          </ion-thumbnail>
+          <h2>
+            {{oKid.positives}} positives
+          </h2>
+        </ion-item>
       </ion-col>
     </ion-row>
-  </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-item class="child-item">
+          <ion-thumbnail item-left>
+            <img src="./assets/imgs/logo.png" />
+          </ion-thumbnail>
+          <h2>
+            {{oKid.negatives}} negatives
+          </h2>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
   <ion-fab right bottom>
-    <button ion-fab color="secondary" large outline icon-only>
-      <ion-icon name='happy' is-active="false"></ion-icon>
+    <button ion-fab color="secondary" large outline icon-only (click)="addPositives()" >
+      <ion-icon name='happy' ></ion-icon>
     </button>
   </ion-fab>
   <ion-fab left bottom>
-    <button ion-fab color="danger">
-      <ion-icon name='sad' is-active="false"></ion-icon>
+    <button ion-fab color="danger" (click)="addNegatives()">
+      <ion-icon name='sad' ></ion-icon>
     </button>
 
   </ion-fab>

@@ -27,4 +27,15 @@ export class AddPointsPage {
     console.log('ionViewDidLoad AddPointsPage');
   }
 
+  addPositives(): void {
+    console.log(this.oKid.positives);
+    
+    this.oKid.positives++;
+    console.log(this.oKid.positives);
+  }
+
+  addNegatives(): void {
+    this.oKid.negatives++;
+  }
+
 }
