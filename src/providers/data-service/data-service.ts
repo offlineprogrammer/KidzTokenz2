@@ -123,5 +123,33 @@ export class DataServiceProvider {
     });
   }
 
+  deleteKid(data: Kid): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (typeof this.kidzList === 'undefined') {
+        this.kidzList = [];
+      }
+      if (this.userData.isGuestUser) {
+        let index = this.kidzList.indexOf(data);
+        if (index > -1) {
+          this.kidzList.splice(index, 1);
+        }
+        this.saveData(this.kidzList, this.KIDS_KEY);
+      }
+      else {
+        var adaRef = this.kidzList.child(data.kidId);
+        adaRef.remove()
+          .then(function () {
+            console.log("Remove succeeded.")
+          })
+          .catch(function (error) {
+            console.log("Remove failed: " + error.message)
+          });
+      }
+      resolve('Done');
+    }).catch((error) => {
+      // reject('Only available on a device');
+    });
+  }
+
 
 }

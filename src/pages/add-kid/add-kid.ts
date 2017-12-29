@@ -80,8 +80,8 @@ export class AddKidPage {
       name: this.addKidForm.value.kidName,
       isActive: true,
       kidPhoto: '',
-      positives:7,
-      negatives:2
+      positives:0,
+      negatives:0
     };
     if (this.addKidForm.status === 'VALID') {
       this.dataService.createKid(newkid, this.kidPicture)
