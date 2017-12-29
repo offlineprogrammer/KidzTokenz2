@@ -11,7 +11,7 @@ import { UserDataProvider } from '../providers/user-data/user-data';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DataServiceProvider } from '../providers/data-service/data-service';
-
+import { AddPointsPage } from '../pages/add-points/add-points';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
     KidzPointZ,
     HomePage,
     LoginPage,
-    AddKidPage
+    AddKidPage,
+    AddPointsPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,8 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
     KidzPointZ,
     HomePage,
     LoginPage,
-    AddKidPage
+    AddKidPage,
+    AddPointsPage
   ],
   providers: [
     StatusBar,

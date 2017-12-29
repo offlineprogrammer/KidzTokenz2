@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {
+  Kid
+} from '../../models/kid';
 
 /**
  * Generated class for the AddPointsPage page.
@@ -14,8 +17,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'add-points.html',
 })
 export class AddPointsPage {
-
+  oKid: Kid
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.oKid = navParams.get('kid');
+    console.log(this.oKid);
   }
 
   ionViewDidLoad() {

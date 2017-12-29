@@ -10,6 +10,9 @@ import {
   AddKidPage
 } from '../add-kid/add-kid';
 import {
+  AddPointsPage
+} from '../add-points/add-points';
+import {
   DataServiceProvider
 } from '../../providers/data-service/data-service';
 import {
@@ -37,6 +40,13 @@ export class HomePage {
         loader.dismiss()
       });
 
+  }
+
+  itemSelected(data: Kid): void {
+    this.navCtrl.push(AddPointsPage, {
+      kid: data
+    });
+   
   }
 
   addNewKid(): void {
