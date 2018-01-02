@@ -12,6 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { AddPointsPage } from '../pages/add-points/add-points';
+import { SelectMonsterPage } from '../pages/select-monster/select-monster';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AddPointsPage } from '../pages/add-points/add-points';
     HomePage,
     LoginPage,
     AddKidPage,
-    AddPointsPage
+    AddPointsPage,
+    SelectMonsterPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { AddPointsPage } from '../pages/add-points/add-points';
     HomePage,
     LoginPage,
     AddKidPage,
-    AddPointsPage
+    AddPointsPage,
+    SelectMonsterPage
   ],
   providers: [
     StatusBar,

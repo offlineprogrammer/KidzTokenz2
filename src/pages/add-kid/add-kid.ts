@@ -6,7 +6,8 @@ import {
   NavController,
   ViewController,
   NavParams,
-  LoadingController
+  LoadingController,
+  ModalController
 } from 'ionic-angular';
 import {
   FormBuilder,
@@ -18,6 +19,9 @@ import {
 import {
   Kid
 } from '../../models/kid';
+import {
+  SelectMonsterPage
+} from '../select-monster/select-monster';
 
 /**
  * Generated class for the AddKidPage page.
@@ -33,13 +37,10 @@ import {
 })
 export class AddKidPage {
   addKidForm: FormGroup;
-  tokenType: string = 'assets/images/star.png';
-  srcTokenNumbers: string = 'assets/images/5.png';
-  tokenNumbers: number = 5;
-  base64Image: string;
-  kidPicture: any;
+  kidMonster: string = 'assets/monsters/star.png';
   constructor(public navCtrl: NavController,
     private viewController: ViewController,
+    private modalController: ModalController,
     private formBuilder: FormBuilder,
     public navParams: NavParams,
     private loadingCtrl: LoadingController,
@@ -52,6 +53,14 @@ export class AddKidPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddKidPage');
+  }
+
+  selectMonster() {
+    let modal = this.modalController.create(SelectMonsterPage, { selectedMonster: this.kidMonster });
+    modal.onDidDismiss(data => {
+      this.kidMonster = data.selectedToken;
+    });
+    modal.present();
   }
 
   close() {
@@ -79,12 +88,12 @@ export class AddKidPage {
       kidId: this.generateUUID(),
       name: this.addKidForm.value.kidName,
       isActive: true,
-      kidPhoto: '',
+      kidMonster: this.kidMonster,
       positives:0,
       negatives:0
     };
     if (this.addKidForm.status === 'VALID') {
-      this.dataService.createKid(newkid, this.kidPicture)
+      this.dataService.createKid(newkid)
         .then(() => {
           /*       this.dataService.updateKids();*/
           //this.trackEvent('Child', 'AddChild', newkid.tokenType, newkid.tokenNumbers);

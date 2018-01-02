@@ -4,7 +4,7 @@ export class Kid {
   isActive: boolean;
   positives: number;
   negatives: number;
-  kidPhoto: string;
+  kidMonster: string;
 
 
 }

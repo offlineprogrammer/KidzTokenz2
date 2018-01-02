@@ -1,0 +1,29 @@
+<!--
+  Generated template for the SelectMonsterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>
+      Select Monster
+    </ion-title>
+    <ion-buttons start>
+       <button ion-button icon-only (click)="dismiss()"><ion-icon name="close-circle"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item class="child-item" *ngFor="let item of kidMonstors" (click)="itemSelected(item)">
+      <ion-thumbnail item-left>
+        <img src="{{item}}">
+      </ion-thumbnail>
+      <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

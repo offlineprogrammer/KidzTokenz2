@@ -82,7 +82,24 @@ export class DataServiceProvider {
 
   }
 
-  createKid(data: Kid, kidPicture): Promise < any > {
+  getMonsters(): string[] {
+    let kidMonsters: any =
+      ['assets/monsters/1.png',
+        'assets/monsters/2.png',
+        'assets/monsters/3.png',
+        'assets/monsters/4.png',
+        'assets/monsters/5.png',
+        'assets/monsters/6.png',
+        'assets/monsters/7.png',
+        'assets/monsters/8.png',
+        'assets/monsters/9.png',
+        'assets/monsters/10.png',
+        'assets/monsters/11.png',
+      ];
+    return kidMonsters;
+  }
+
+  createKid(data: Kid): Promise < any > {
     return new Promise(resolve => {
       if (this.userData.isGuestUser) {
         if (typeof this.kidzList === 'undefined') {
@@ -102,21 +119,7 @@ export class DataServiceProvider {
           isActive: data.isActive
         }).then(newKid => {
           this.kidzList.child(newKid.key).child('childId').set(newKid.key);
-          if (kidPicture != null) {
-            this.kidzPhotosRef.child(newKid.key).child('kidPhoto.png')
-              .putString(kidPicture, 'base64', {
-                contentType: 'image/png'
-              })
-              .then((savedPicture) => {
-                this.kidzList.child(newKid.key).child('kidPhoto')
-                  .set(savedPicture.downloadURL);
-                this.kidzList.child(newKid.key).child('childimage')
-                  .set("");
-                resolve("Done");
-              });
-          } else {
-            resolve("Done");
-          }
+          resolve("Done");
         });
       }
 
