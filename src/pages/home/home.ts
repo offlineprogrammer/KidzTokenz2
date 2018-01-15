@@ -56,11 +56,11 @@ export class HomePage {
         content: "Please wait..."
       });
       loader.present();
-      // this.dataService.getKids()
-      //   .then((response) => {
-      //     this.kids = response;
+       this.dataService.getKids()
+         .then((response) => {
+           this.kids = response;
       loader.dismiss()
-      //   });
+         });
     });
     modal.present();
   }

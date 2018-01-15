@@ -37,7 +37,7 @@ import {
 })
 export class AddKidPage {
   addKidForm: FormGroup;
-  kidMonster: string = 'assets/monsters/star.png';
+  kidMonster: string = 'assets/monsters/1.png';
   constructor(public navCtrl: NavController,
     private viewController: ViewController,
     private modalController: ModalController,

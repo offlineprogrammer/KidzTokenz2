@@ -14,7 +14,7 @@
 <ion-content padding>
 
   <ion-card>
-      <canvas #doughnutCanvas> </canvas>
+     
    
     <ion-card-content>
       <ion-card-title text-center>
@@ -22,9 +22,11 @@
       </ion-card-title>
       <p text-center>
         
-          <ion-badge color="secondary">{{oKid.positives}} positives</ion-badge>
-          <ion-badge color="danger">{{oKid.negatives}} negatives</ion-badge>
-          <img src="./assets/imgs/logo.png" />
+          <ion-badge class="points-badge" color="secondary">{{oKid.positives}} positives</ion-badge>
+          <ion-badge class="points-badge" color="danger">{{oKid.negatives}} negatives</ion-badge>
+          
+          <img src="{{oKid.kidMonster}}" />
+          <canvas #doughnutCanvas> </canvas>
         </p>
     </ion-card-content>
   </ion-card>
