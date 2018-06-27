@@ -13,23 +13,43 @@
 
 <ion-content padding>
 
-  <ion-card>
-     
-   
-    <ion-card-content>
-      <ion-card-title text-center>
-        <div>{{oKid.name}}</div>
-      </ion-card-title>
-      <p text-center>
-        
-          <ion-badge class="points-badge" color="secondary">{{oKid.positives}} positives</ion-badge>
-          <ion-badge class="points-badge" color="danger">{{oKid.negatives}} negatives</ion-badge>
-          
-          <img src="{{oKid.kidMonster}}" />
-          <canvas #doughnutCanvas> </canvas>
-        </p>
-    </ion-card-content>
-  </ion-card>
+    <ion-card>
+
+        <ion-item>
+            <ion-thumbnail item-left>
+                <img src="{{oKid.kidMonster}}">
+              </ion-thumbnail>
+          <h2>{{oKid.name}}</h2>
+        </ion-item>
+      
+        <canvas #doughnutCanvas> </canvas>
+      
+        <ion-card-content>
+          <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+        </ion-card-content>
+      
+        <ion-row>
+          <ion-col text-center>
+              <div>
+            <button ion-button icon-left clear large color="secondary">
+              <ion-icon name="md-happy"></ion-icon>
+              <div>{{oKid.positives}}</div>
+            </button>
+          </div>
+          </ion-col>
+          <ion-col text-center>
+            <div>
+            <button ion-button icon-left clear large danger color="danger">
+              <ion-icon name="md-sad"></ion-icon>
+              <div>{{oKid.negatives}}</div>
+            </button>
+          </div>
+          </ion-col>
+         
+        </ion-row>
+      
+      </ion-card>
+
   <ion-fab right bottom>
     <button ion-fab color="secondary" large outline icon-only (click)="addPositives()" >
       <ion-icon name='happy' ></ion-icon>

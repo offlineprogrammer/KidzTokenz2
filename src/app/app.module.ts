@@ -12,6 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { AddPointsPage } from '../pages/add-points/add-points';
+import { ChildInfoPage } from '../pages/child-info/child-info';
 import { SelectMonsterPage } from '../pages/select-monster/select-monster';
 
 
@@ -22,7 +23,8 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     LoginPage,
     AddKidPage,
     AddPointsPage,
-    SelectMonsterPage
+    SelectMonsterPage,
+    ChildInfoPage
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     LoginPage,
     AddKidPage,
     AddPointsPage,
+    ChildInfoPage,
     SelectMonsterPage
   ],
   providers: [

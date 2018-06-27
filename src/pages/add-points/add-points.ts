@@ -62,12 +62,13 @@ export class AddPointsPage {
 
       type: 'doughnut',
       data: {
-        labels: [this.percentage + "% Positive"],
+       // labels: [this.percentage + "% Positive"],
         datasets: [{
-          data: [this.percentage, (100 - this.percentage)],
+          // data: [this.percentage, (100 - this.percentage)],
+          data: [this.oKid.positives, this.oKid.negatives],
           backgroundColor: [
             'rgba(0, 255, 0, 1)',
-            'rgba(0, 0, 0, 0)'
+            'rgba(255, 0, 0, 1)'
           ]
         }]
       },
@@ -79,8 +80,8 @@ export class AddPointsPage {
           enabled: false
         },
         title: {
-          display: true,
-          text: this.percentage + "% Positive",
+          display: false,
+          //text: this.percentage + "% Positive",
           fontStyle: 'bold',
           fontSize: 18
       }
