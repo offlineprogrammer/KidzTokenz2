@@ -14,12 +14,40 @@
       <ion-item class="child-item">
         <ion-input calss="child-name" placeholder="Type Name Here" formControlName="kidName"  autofocus type="text"></ion-input>
       </ion-item>
+      <ion-item class="child-item" (click)="selectToken()">
+        Select Token
+        <ion-thumbnail item-left>
+          <img src="{{tokenType}}">
+        </ion-thumbnail>
+        <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+      </ion-item>
+      <ion-item class="child-item" (click)="selectTokenNumbers()">
+        Token Numbers
+        <ion-thumbnail item-left>
+          <img src="{{srcTokenNumbers}}">
+        </ion-thumbnail>
+        <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+      </ion-item>
       <ion-item class="child-item" (click)="selectMonster()">
           Select Your Monster
           <ion-thumbnail item-left>
             <img src="{{kidMonster}}">
           </ion-thumbnail>
           <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+        </ion-item>
+        <ion-item class="child-item">
+          <ion-row>
+            <ion-col width-50>
+              <button ion-button color="danger" type="button" full round large (click)="takePicture()">
+                      <ion-icon name="md-camera"></ion-icon>
+                  </button>
+            </ion-col>
+            <ion-col width-50>
+              <button ion-button color="secondary" type="button" full round large (click)="openGallery()">
+                      <ion-icon name="md-image"></ion-icon>
+                  </button>
+            </ion-col>
+          </ion-row>
         </ion-item>
     </ion-list>
     <div padding>

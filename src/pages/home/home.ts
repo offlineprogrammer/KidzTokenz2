@@ -49,7 +49,7 @@ export class HomePage {
     this.navCtrl.push(ChildInfoPage, {
       kid: data
     });
-   
+
   }
 
   addNewKid(): void {
@@ -59,11 +59,11 @@ export class HomePage {
         content: "Please wait..."
       });
       loader.present();
-       this.dataService.getKids()
-         .then((response) => {
-           this.kids = response;
-      loader.dismiss()
-         });
+      this.dataService.getKids()
+        .then((response) => {
+          this.kids = response;
+          loader.dismiss()
+        });
     });
     modal.present();
   }
