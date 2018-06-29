@@ -56,7 +56,9 @@ export class AddKidPage {
   }
 
   selectMonster() {
-    let modal = this.modalController.create(SelectMonsterPage, { selectedMonster: this.kidMonster });
+    let modal = this.modalController.create(SelectMonsterPage, {
+      selectedMonster: this.kidMonster
+    });
     modal.onDidDismiss(data => {
       this.kidMonster = data.selectedToken;
     });
@@ -89,8 +91,15 @@ export class AddKidPage {
       name: this.addKidForm.value.kidName,
       isActive: true,
       kidMonster: this.kidMonster,
-      positives:0,
-      negatives:0
+      positives: 0,
+      negatives: 0,
+      tokenType: '',
+      negativetokenType: '',
+      tokenNumbers: 0,
+      srcTokenNumbers: '',
+      tasksCount: 0,
+      kidPhoto: '',
+      tasks: []
     };
     if (this.addKidForm.status === 'VALID') {
       this.dataService.createKid(newkid)
