@@ -13,6 +13,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { AddPointsPage } from '../pages/add-points/add-points';
 import { ChildInfoPage } from '../pages/child-info/child-info';
+import { TokentypePage } from '../pages/tokentype/tokentype';
 import { SelectMonsterPage } from '../pages/select-monster/select-monster';
 
 
@@ -24,7 +25,8 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     AddKidPage,
     AddPointsPage,
     SelectMonsterPage,
-    ChildInfoPage
+    ChildInfoPage,
+    TokentypePage
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     AddKidPage,
     AddPointsPage,
     ChildInfoPage,
+    TokentypePage,
     SelectMonsterPage
   ],
   providers: [
