@@ -41,6 +41,24 @@ export class DataServiceProvider {
     }
   }
 
+  getTokenTypes(): string[] {
+    let tokenTypes: any =
+      ['assets/tokentypes/star.png',
+        'assets/tokentypes/face.png',
+        'assets/tokentypes/giraffe.png',
+        'assets/tokentypes/leopard.png',
+        'assets/tokentypes/monkey.png',
+        'assets/tokentypes/monkeytoy.png',
+        'assets/tokentypes/rocket.png',
+        'assets/tokentypes/Sheep.png',
+        'assets/tokentypes/teddybear.png',
+        'assets/tokentypes/train.png',
+        'assets/tokentypes/triceratops.png',
+      ];
+    return tokenTypes;
+  }
+
+
   getKids(): Promise < Kid[] > {
 
     try {
