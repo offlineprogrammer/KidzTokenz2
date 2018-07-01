@@ -23,6 +23,10 @@ import {
   SelectMonsterPage
 } from '../select-monster/select-monster';
 
+import {
+  TokentypePage
+} from '../tokentype/tokentype';
+
 /**
  * Generated class for the AddKidPage page.
  *
@@ -38,6 +42,7 @@ import {
 export class AddKidPage {
   addKidForm: FormGroup;
   kidMonster: string = 'assets/monsters/1.png';
+  tokenType: string = 'assets/tokentypes/star.png';
   constructor(public navCtrl: NavController,
     private viewController: ViewController,
     private modalController: ModalController,
@@ -61,6 +66,14 @@ export class AddKidPage {
     });
     modal.onDidDismiss(data => {
       this.kidMonster = data.selectedToken;
+    });
+    modal.present();
+  }
+
+  selectToken() {
+    let modal = this.modalController.create(TokentypePage, { selectedToken: this.tokenType });
+    modal.onDidDismiss(data => {
+      this.tokenType = data.selectedToken;
     });
     modal.present();
   }
