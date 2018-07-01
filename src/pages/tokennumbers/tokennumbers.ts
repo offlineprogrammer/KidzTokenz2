@@ -33,7 +33,7 @@ export class TokennumbersPage {
     let nArray = [];
     nArray = Array.apply(null, Array(n));
     return nArray.map(function (x, i) {
-      return 'assets/images/' + (i + 1) + '.png';
+      return 'assets/tokennumbers/' + (i + 1) + '.png';
     });
   }
 

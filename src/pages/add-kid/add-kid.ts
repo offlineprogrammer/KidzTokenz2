@@ -27,6 +27,11 @@ import {
   TokentypePage
 } from '../tokentype/tokentype';
 
+import {
+  TokennumbersPage
+} from '../tokennumbers/tokennumbers';
+
+
 /**
  * Generated class for the AddKidPage page.
  *
@@ -43,6 +48,8 @@ export class AddKidPage {
   addKidForm: FormGroup;
   kidMonster: string = 'assets/monsters/1.png';
   tokenType: string = 'assets/tokentypes/star.png';
+  srcTokenNumbers: string = 'assets/tokennumbers/5.png';
+  tokenNumbers: number = 5;
   constructor(public navCtrl: NavController,
     private viewController: ViewController,
     private modalController: ModalController,
@@ -69,6 +76,18 @@ export class AddKidPage {
     });
     modal.present();
   }
+
+  selectTokenNumbers() {
+    let modal = this.modalController.create(TokennumbersPage, {
+      tokenNumbers: this.tokenNumbers
+    });
+    modal.onDidDismiss(data => {
+      this.tokenNumbers = data.tokenNumbers;
+      this.srcTokenNumbers = 'assets/tokennumbers/' + this.tokenNumbers + '.png';
+    });
+    modal.present();
+  }
+
 
   selectToken() {
     let modal = this.modalController.create(TokentypePage, { selectedToken: this.tokenType });
