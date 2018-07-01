@@ -14,6 +14,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 import { AddPointsPage } from '../pages/add-points/add-points';
 import { ChildInfoPage } from '../pages/child-info/child-info';
 import { TokentypePage } from '../pages/tokentype/tokentype';
+import { TokennumbersPage } from '../pages/tokennumbers/tokennumbers';
 import { SelectMonsterPage } from '../pages/select-monster/select-monster';
 
 
@@ -26,7 +27,8 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     AddPointsPage,
     SelectMonsterPage,
     ChildInfoPage,
-    TokentypePage
+    TokentypePage,
+    TokennumbersPage
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     AddPointsPage,
     ChildInfoPage,
     TokentypePage,
+    TokennumbersPage,
     SelectMonsterPage
   ],
   providers: [
