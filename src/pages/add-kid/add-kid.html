@@ -17,13 +17,15 @@
       <ion-item class="child-item" (click)="selectToken()">
         Select Token
         <ion-thumbnail item-left>
-          <img src="{{tokenType}}">
+          <ion-input type="text" hidden formControlName="tokenType"></ion-input>
+          <img src="{{tokenType}}"  >
         </ion-thumbnail>
         <ion-icon name='ios-arrow-forward' item-right></ion-icon>
       </ion-item>
       <ion-item class="child-item" (click)="selectTokenNumbers()">
         Token Numbers
         <ion-thumbnail item-left>
+            <ion-input type="text" hidden formControlName="tokenNumbers"></ion-input>
           <img src="{{srcTokenNumbers}}">
         </ion-thumbnail>
         <ion-icon name='ios-arrow-forward' item-right></ion-icon>
@@ -31,7 +33,8 @@
       <ion-item class="child-item" (click)="selectMonster()">
           Select Your Monster
           <ion-thumbnail item-left>
-            <img src="{{kidMonster}}">
+              <ion-input type="text" hidden formControlName="kidMonster"></ion-input>
+            <img src="{{kidMonster}}" >
           </ion-thumbnail>
           <ion-icon name='ios-arrow-forward' item-right></ion-icon>
         </ion-item>

@@ -11,7 +11,7 @@ import {
 } from 'ionic-angular';
 import {
   FormBuilder,
-  FormGroup
+  FormGroup,Validators
 } from '@angular/forms';
 import {
   DataServiceProvider
@@ -59,7 +59,10 @@ export class AddKidPage {
     private dataService: DataServiceProvider) {
 
     this.addKidForm = this.formBuilder.group({
-      kidName: [''],
+      kidName: ['',[Validators.required, Validators.minLength(2)]],
+      kidMonster: [this.kidMonster,[Validators.required, Validators.minLength(2)]],
+      tokenType: [this.tokenType,[Validators.required, Validators.minLength(2)]],
+      tokenNumbers: [this.tokenNumbers,[Validators.required]],
     });
   }
 
@@ -113,6 +116,14 @@ export class AddKidPage {
 
 
   processForm() {
+    let foo = this.addKidForm.value;
+    let bar = this.addKidForm.valid;
+
+    console.log('addKidForm: ', foo);
+    console.log('valid: ', bar);
+if (this.addKidForm.valid==false){
+  return;
+}
     let newkid: Kid;
     let loader = this.loadingCtrl.create({
       content: "Please wait..."
