@@ -14,6 +14,9 @@
       <ion-item class="child-item">
         <ion-input calss="child-name" placeholder="Type Name Here" formControlName="kidName"  autofocus type="text"></ion-input>
       </ion-item>
+      <ion-item *ngIf="addKidForm.controls.kidName.invalid && addKidForm.controls.kidName.dirty" no-lines>
+        <p>Please set the Kid Name</p>
+      </ion-item>
       <ion-item class="child-item" (click)="selectToken()">
         Select Token
         <ion-thumbnail item-left>
@@ -54,7 +57,7 @@
         </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button color="primary" full round large type="submit" ><ion-icon name="md-person-add"></ion-icon></button>
+      <button ion-button color="primary" full round large type="submit" [disabled]="addKidForm.invalid" ><ion-icon name="md-person-add"></ion-icon></button>
     </div>
     <div class="child-photo" text-center>
       <img src="{{base64Image}}" class="child-background-image">
