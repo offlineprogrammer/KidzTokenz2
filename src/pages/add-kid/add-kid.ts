@@ -116,11 +116,11 @@ export class AddKidPage {
 
 
   processForm() {
-    let foo = this.addKidForm.value;
-    let bar = this.addKidForm.valid;
+    let oKid = this.addKidForm.value;
+    let bValidKid = this.addKidForm.valid;
 
-    console.log('addKidForm: ', foo);
-    console.log('valid: ', bar);
+    console.log('addKidForm: ', oKid);
+    console.log('valid: ', bValidKid);
 if (this.addKidForm.valid==false){
   return;
 }
@@ -131,14 +131,14 @@ if (this.addKidForm.valid==false){
     loader.present();
     newkid = {
       kidId: this.generateUUID(),
-      name: this.addKidForm.value.kidName,
+      name: oKid.kidName,
       isActive: true,
-      kidMonster: this.kidMonster,
+      kidMonster: oKid.kidMonster,
       positives: 0,
       negatives: 0,
-      tokenType: '',
+      tokenType: oKid.tokenType,
       negativetokenType: '',
-      tokenNumbers: 0,
+      tokenNumbers: oKid.tokenNumbers,
       srcTokenNumbers: '',
       tasksCount: 0,
       kidPhoto: '',
