@@ -41,9 +41,9 @@ export class SelectMonsterPage {
 
 
   itemSelected(data: string): void {
-
+    console.log('itemSelected: ', data);
     this.viewCtrl.dismiss({
-      selectedToken: data
+      selectedMonster: data
     });
 
 
@@ -51,7 +51,7 @@ export class SelectMonsterPage {
 
   dismiss() {
     this.viewCtrl.dismiss({
-      selectedToken: this.selectedMonster
+      selectedMonster: this.selectedMonster
     });
   }
 

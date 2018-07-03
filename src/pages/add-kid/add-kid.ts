@@ -75,7 +75,7 @@ export class AddKidPage {
       selectedMonster: this.kidMonster
     });
     modal.onDidDismiss(data => {
-      this.kidMonster = data.selectedToken;
+      this.kidMonster = data.selectedMonster;
     });
     modal.present();
   }
@@ -139,7 +139,7 @@ if (this.addKidForm.valid==false){
       tokenType: oKid.tokenType,
       negativetokenType: '',
       tokenNumbers: oKid.tokenNumbers,
-      srcTokenNumbers: '',
+      srcTokenNumbers: 'assets/tokennumbers/' + oKid.tokenNumbers + '.png',
       tasksCount: 0,
       kidPhoto: '',
       tasks: []
