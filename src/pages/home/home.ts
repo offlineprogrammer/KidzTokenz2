@@ -13,8 +13,8 @@ import {
   AddPointsPage
 } from '../add-points/add-points';
 import {
-  ChildInfoPage
-} from '../child-info/child-info';
+  KidInfoPage
+} from '../kid-info/kid-info';
 import {
   DataServiceProvider
 } from '../../providers/data-service/data-service';
@@ -46,7 +46,7 @@ export class HomePage {
   }
 
   itemSelected(data: Kid): void {
-    this.navCtrl.push(ChildInfoPage, {
+    this.navCtrl.push(KidInfoPage, {
       kid: data
     });
 
