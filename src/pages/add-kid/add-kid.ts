@@ -11,7 +11,8 @@ import {
 } from 'ionic-angular';
 import {
   FormBuilder,
-  FormGroup,Validators
+  FormGroup,
+  Validators
 } from '@angular/forms';
 import {
   DataServiceProvider
@@ -59,10 +60,10 @@ export class AddKidPage {
     private dataService: DataServiceProvider) {
 
     this.addKidForm = this.formBuilder.group({
-      kidName: ['',[Validators.required, Validators.minLength(2)]],
-      kidMonster: [this.kidMonster,[Validators.required, Validators.minLength(2)]],
-      tokenType: [this.tokenType,[Validators.required, Validators.minLength(2)]],
-      tokenNumbers: [this.tokenNumbers,[Validators.required]],
+      kidName: ['', [Validators.required, Validators.minLength(2)]],
+      kidMonster: [this.kidMonster, [Validators.required, Validators.minLength(2)]],
+      tokenType: [this.tokenType, [Validators.required, Validators.minLength(2)]],
+      tokenNumbers: [this.tokenNumbers, [Validators.required]],
     });
   }
 
@@ -75,7 +76,10 @@ export class AddKidPage {
       selectedMonster: this.kidMonster
     });
     modal.onDidDismiss(data => {
+      console.log('itemSelectedvv: ', data);
       this.kidMonster = data.selectedMonster;
+      this.addKidForm.controls["kidMonster"].setValue(data.selectedMonster);
+      console.log('this.kidMonster: ',this.addKidForm.controls["kidMonster"].value);
     });
     modal.present();
   }
@@ -87,15 +91,21 @@ export class AddKidPage {
     modal.onDidDismiss(data => {
       this.tokenNumbers = data.tokenNumbers;
       this.srcTokenNumbers = 'assets/tokennumbers/' + this.tokenNumbers + '.png';
+      this.addKidForm.controls["tokenNumbers"].setValue(data.tokenNumbers);
+      console.log('this.tokenNumbers: ',this.addKidForm.controls["tokenNumbers"].value);
     });
     modal.present();
   }
 
 
   selectToken() {
-    let modal = this.modalController.create(TokentypePage, { selectedToken: this.tokenType });
+    let modal = this.modalController.create(TokentypePage, {
+      selectedToken: this.tokenType
+    });
     modal.onDidDismiss(data => {
       this.tokenType = data.selectedToken;
+      this.addKidForm.controls["tokenType"].setValue(data.selectedToken);
+      console.log('this.tokenType: ',this.addKidForm.controls["tokenType"].value);
     });
     modal.present();
   }
@@ -121,9 +131,10 @@ export class AddKidPage {
 
     console.log('addKidForm: ', oKid);
     console.log('valid: ', bValidKid);
-if (this.addKidForm.valid==false){
-  return;
-}
+    console.log('oKid.kidMonster: ', oKid.kidMonster);
+    if (this.addKidForm.valid == false) {
+      return;
+    }
     let newkid: Kid;
     let loader = this.loadingCtrl.create({
       content: "Please wait..."
