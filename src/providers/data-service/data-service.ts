@@ -172,5 +172,18 @@ export class DataServiceProvider {
     });
   }
 
+  updateKids(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (typeof this.kidzList === 'undefined') {
+        this.kidzList = [];
+      }
+      this.saveData(this.kidzList, this.KIDS_KEY);
+      resolve('Done');
+    }).catch((error) => {
+      //this.logError(error);
+      // reject('Only available on a device');
+    });
+  }
+
 
 }

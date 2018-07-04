@@ -4,7 +4,8 @@ import {
 import {
   IonicPage,
   NavController,
-  NavParams
+  ModalController,
+  NavParams,
 } from 'ionic-angular';
 import {
   Kid
@@ -12,6 +13,10 @@ import {
 import {
   DataServiceProvider
 } from '../../providers/data-service/data-service';
+import {
+  TokennumbersPage
+} from '../tokennumbers/tokennumbers';
+
 
 /**
  * Generated class for the KidInfoPage page.
@@ -28,7 +33,7 @@ import {
 export class KidInfoPage {
   oKid: Kid;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private dataService: DataServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataServiceProvider, private modalController: ModalController, ) {
     this.oKid = navParams.get('kid');
     console.log(this.oKid);
   }
@@ -41,10 +46,28 @@ export class KidInfoPage {
 
     this.dataService.deleteKid(data)
       .then(() => {
-      //  this.trackEvent('ChildInfo', 'deleteChild', '', 0);
-      //  this.events.publish('child:deleted');
+        //  this.trackEvent('ChildInfo', 'deleteChild', '', 0);
+        //  this.events.publish('child:deleted');
         this.navCtrl.pop();
       });
+  }
+
+
+  changeTokenNumbers(): void {
+    let modal = this.modalController.create(TokennumbersPage, { tokenNumbers: this.oKid.srcTokenNumbers });
+    modal.onDidDismiss(data => {
+      this.oKid.tokenNumbers = data.tokenNumbers;
+      this.oKid.srcTokenNumbers = 'assets/tokennumbers/' + this.oKid.tokenNumbers + '.png';
+      this.updateData();
+      //this.trackEvent('ChildInfo', 'changeTokenNumbers', this.oKid.srcTokenNumbers, 0);
+    });
+    modal.present();
+  }
+
+  private updateData(): void {
+    this.oKid.srcTokenNumbers = 'assets/tokennumbers/' + this.oKid.tokenNumbers + '.png',
+      this.dataService.updateKids()
+        .then(() => { });
   }
 
 }
