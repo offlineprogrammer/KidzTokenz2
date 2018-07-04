@@ -17,6 +17,11 @@ import {
   TokennumbersPage
 } from '../tokennumbers/tokennumbers';
 
+import {
+  TokentypePage
+} from '../tokentype/tokentype';
+
+
 
 /**
  * Generated class for the KidInfoPage page.
@@ -60,6 +65,17 @@ export class KidInfoPage {
       this.oKid.srcTokenNumbers = 'assets/tokennumbers/' + this.oKid.tokenNumbers + '.png';
       this.updateData();
       //this.trackEvent('ChildInfo', 'changeTokenNumbers', this.oKid.srcTokenNumbers, 0);
+    });
+    modal.present();
+  }
+
+  changeToken(): void {
+    let modal = this.modalController.create(TokentypePage, { selectedToken: this.oKid.tokenType });
+    modal.onDidDismiss(data => {
+      this.oKid.tokenType = data.selectedToken;
+      this.oKid.negativetokenType = data.selectedToken.replace('assets/images/', 'assets/images/bad-');
+      this.updateData();
+   //   this.trackEvent('ChildInfo', 'changeToken', this.oKid.tokenType, 0);
     });
     modal.present();
   }
