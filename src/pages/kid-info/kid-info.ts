@@ -28,13 +28,23 @@ import {
 export class KidInfoPage {
   oKid: Kid;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private dataService: DataServiceProvider) {
     this.oKid = navParams.get('kid');
     console.log(this.oKid);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad KidInfoPage');
+  }
+
+  deleteKid(data: Kid): void {
+
+    this.dataService.deleteKid(data)
+      .then(() => {
+      //  this.trackEvent('ChildInfo', 'deleteChild', '', 0);
+      //  this.events.publish('child:deleted');
+        this.navCtrl.pop();
+      });
   }
 
 }
