@@ -48,7 +48,7 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     LoginPage,
     AddKidPage,
     AddPointsPage,
-    ChildInfoPage,
+    KidInfoPage,
     TokentypePage,
     TokennumbersPage,
     SelectMonsterPage
