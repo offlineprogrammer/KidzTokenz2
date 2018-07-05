@@ -5,14 +5,67 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>edit-kid</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    <ion-navbar color="danger">
+        <ion-title>Kidz Tokenz</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="close()"><ion-icon name="close-circle"></ion-icon></button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+    <form (submit)="processForm()" [formGroup]="addKidForm">
+      <ion-list>
+        <ion-item class="child-item">
+          <ion-input calss="child-name" placeholder="Type Name Here" formControlName="kidName"  autofocus type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="addKidForm.controls.kidName.invalid && addKidForm.controls.kidName.dirty" no-lines>
+          <p>Please set the Kid Name</p>
+        </ion-item>
+        <ion-item class="child-item" (click)="selectToken()">
+          Select Token
+          <ion-thumbnail item-left>
+            <ion-input type="text" hidden formControlName="tokenType"></ion-input>
+            <img src="{{tokenType}}"  >
+          </ion-thumbnail>
+          <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+        </ion-item>
+        <ion-item class="child-item" (click)="selectTokenNumbers()">
+          Token Numbers
+          <ion-thumbnail item-left>
+              <ion-input type="text" hidden formControlName="tokenNumbers"></ion-input>
+            <img src="{{srcTokenNumbers}}">
+          </ion-thumbnail>
+          <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+        </ion-item>
+        <ion-item class="child-item" (click)="selectMonster()">
+            Select Your Monster
+            <ion-thumbnail item-left>
+                <ion-input type="text" hidden formControlName="kidMonster"></ion-input>
+              <img src="{{kidMonster}}" >
+            </ion-thumbnail>
+            <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+          </ion-item>
+          <ion-item class="child-item">
+            <ion-row>
+              <ion-col width-50>
+                <button ion-button color="danger" type="button" full round large (click)="takePicture()">
+                        <ion-icon name="md-camera"></ion-icon>
+                    </button>
+              </ion-col>
+              <ion-col width-50>
+                <button ion-button color="secondary" type="button" full round large (click)="openGallery()">
+                        <ion-icon name="md-image"></ion-icon>
+                    </button>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+      </ion-list>
+      <div padding>
+        <button ion-button color="primary" full round large type="submit" [disabled]="addKidForm.invalid" ><ion-icon name="md-person-add"></ion-icon></button>
+      </div>
+      <div class="child-photo" text-center>
+        <img src="{{base64Image}}" class="child-background-image">
+      </div>
+    </form>
+  </ion-content>
+  
