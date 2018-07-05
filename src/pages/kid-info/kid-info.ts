@@ -21,7 +21,7 @@ import {
   TokentypePage
 } from '../tokentype/tokentype';
 
-
+import { EditKidPage } from '../edit-kid/edit-kid';
 
 /**
  * Generated class for the KidInfoPage page.
@@ -57,6 +57,12 @@ export class KidInfoPage {
       });
   }
 
+  editKid(data: Kid): void {
+
+    this.navCtrl.push(EditKidPage, {
+      kid: data
+    });
+  }
 
   changeTokenNumbers(): void {
     let modal = this.modalController.create(TokennumbersPage, { tokenNumbers: this.oKid.srcTokenNumbers });
