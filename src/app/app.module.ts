@@ -13,9 +13,12 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { AddPointsPage } from '../pages/add-points/add-points';
 import { KidInfoPage } from '../pages/kid-info/kid-info';
+import { EditKidPage } from '../pages/edit-kid/edit-kid';
 import { TokentypePage } from '../pages/tokentype/tokentype';
 import { TokennumbersPage } from '../pages/tokennumbers/tokennumbers';
 import { SelectMonsterPage } from '../pages/select-monster/select-monster';
+
+
 
 
 @NgModule({
@@ -28,6 +31,7 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     SelectMonsterPage,
     KidInfoPage,
     TokentypePage,
+    EditKidPage,
     TokennumbersPage
   ],
   imports: [
@@ -50,6 +54,7 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     AddPointsPage,
     KidInfoPage,
     TokentypePage,
+    EditKidPage,
     TokennumbersPage,
     SelectMonsterPage
   ],
