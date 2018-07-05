@@ -10,7 +10,7 @@
   
       <ion-buttons end>
         <button ion-button icon-only (click)="deleteKid(oKid)">
-          <ion-icon name="md-trash"></ion-icon>
+          <ion-icon name="md-options"></ion-icon>
         </button>
       </ion-buttons>
     </ion-navbar>
@@ -28,25 +28,18 @@
   
     <ion-item-group>
   
-      <ion-item class="child-item" (click)="changeToken()">
-        <ion-label>
-          Type of Token
-        </ion-label>
-        <ion-thumbnail item-left>
-          <img src="{{oKid.tokenType}}">
-        </ion-thumbnail>
-        <ion-icon name='md-options' item-right></ion-icon>
-      </ion-item>
-      <ion-item class="child-item" (click)="changeTokenNumbers()">
-        <ion-label>
-          Number of Tokenz
-        </ion-label>
-  
-        <ion-thumbnail item-left>
-          <img src="{{oKid.srcTokenNumbers}}">
-        </ion-thumbnail>
-        <ion-icon name='md-options' item-right></ion-icon>
-      </ion-item>
+        <ion-item class="child-item" (click)="changeToken()">
+            <ion-thumbnail item-right>
+                <img src="{{oKid.srcTokenNumbers}}">
+              </ion-thumbnail>
+            <ion-thumbnail item-left>
+              <img src="{{oKid.tokenType}}">
+            </ion-thumbnail>
+            
+          </ion-item>
+
+     
+          
   
       <ion-item class="child-item">
         <ion-col text-center>
