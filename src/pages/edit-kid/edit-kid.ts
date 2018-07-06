@@ -55,10 +55,11 @@ export class EditKidPage {
     private dataService: DataServiceProvider) {
       this.oKid = navParams.get('kid');
       this.editKidForm = this.formBuilder.group({
-        kidName: ['', [Validators.required, Validators.minLength(2)]],
+        kidName: [this.oKid.name, [Validators.required, Validators.minLength(2)]],
         kidMonster: [this.oKid.kidMonster, [Validators.required, Validators.minLength(2)]],
         tokenType: [this.oKid.tokenType, [Validators.required, Validators.minLength(2)]],
         tokenNumbers: [this.oKid.tokenNumbers, [Validators.required]],
+        srcTokenNumbers:[this.oKid.srcTokenNumbers],
       });
   }
 

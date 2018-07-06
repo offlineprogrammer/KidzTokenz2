@@ -16,7 +16,7 @@
     <form (submit)="processForm()" [formGroup]="editKidForm">
       <ion-list>
         <ion-item class="child-item">
-          <ion-input calss="child-name" placeholder="Type Name Here" formControlName="kidName"  autofocus type="text"></ion-input>
+          <ion-input calss="child-name" placeholder="Type Name Here" formControlName="kidName"  autofocus type="text">{{editKidForm.controls['kidName'].value}}</ion-input>
         </ion-item>
         <ion-item *ngIf="editKidForm.controls.kidName.invalid && editKidForm.controls.kidName.dirty" no-lines>
           <p>Please set the Kid Name</p>
@@ -33,7 +33,7 @@
           Token Numbers
           <ion-thumbnail item-left>
               <ion-input type="text" hidden formControlName="tokenNumbers"></ion-input>
-            <img src="{{editKidForm.controls['tokenNumbers'].value}}">
+            <img src="{{editKidForm.controls['srcTokenNumbers'].value}}">
           </ion-thumbnail>
           <ion-icon name='ios-arrow-forward' item-right></ion-icon>
         </ion-item>
