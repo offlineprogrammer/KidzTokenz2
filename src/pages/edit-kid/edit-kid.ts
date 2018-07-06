@@ -45,7 +45,21 @@ import {
 })
 export class EditKidPage {
   editKidForm: FormGroup;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  oKid: Kid;
+  constructor(public navCtrl: NavController,
+    private viewController: ViewController,
+    private modalController: ModalController,
+    private formBuilder: FormBuilder,
+    public navParams: NavParams,
+    private loadingCtrl: LoadingController,
+    private dataService: DataServiceProvider) {
+      this.oKid = navParams.get('kid');
+      this.editKidForm = this.formBuilder.group({
+        kidName: ['', [Validators.required, Validators.minLength(2)]],
+        kidMonster: [this.oKid.kidMonster, [Validators.required, Validators.minLength(2)]],
+        tokenType: [this.oKid.tokenType, [Validators.required, Validators.minLength(2)]],
+        tokenNumbers: [this.oKid.tokenNumbers, [Validators.required]],
+      });
   }
 
   ionViewDidLoad() {
