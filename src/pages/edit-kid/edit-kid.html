@@ -13,12 +13,12 @@
     </ion-navbar>
   </ion-header>
   <ion-content padding>
-    <form (submit)="processForm()" [formGroup]="addKidForm">
+    <form (submit)="processForm()" [formGroup]="editKidForm">
       <ion-list>
         <ion-item class="child-item">
           <ion-input calss="child-name" placeholder="Type Name Here" formControlName="kidName"  autofocus type="text"></ion-input>
         </ion-item>
-        <ion-item *ngIf="addKidForm.controls.kidName.invalid && addKidForm.controls.kidName.dirty" no-lines>
+        <ion-item *ngIf="editKidForm.controls.kidName.invalid && editKidForm.controls.kidName.dirty" no-lines>
           <p>Please set the Kid Name</p>
         </ion-item>
         <ion-item class="child-item" (click)="selectToken()">
@@ -61,7 +61,7 @@
           </ion-item>
       </ion-list>
       <div padding>
-        <button ion-button color="primary" full round large type="submit" [disabled]="addKidForm.invalid" ><ion-icon name="md-person-add"></ion-icon></button>
+        <button ion-button color="primary" full round large type="submit" [disabled]="editKidForm.invalid" ><ion-icon name="md-person-add"></ion-icon></button>
       </div>
       <div class="child-photo" text-center>
         <img src="{{base64Image}}" class="child-background-image">
