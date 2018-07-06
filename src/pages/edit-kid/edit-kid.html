@@ -25,7 +25,7 @@
           Select Token
           <ion-thumbnail item-left>
             <ion-input type="text" hidden formControlName="tokenType"></ion-input>
-            <img src="{{tokenType}}"  >
+            <img src="{{editKidForm.controls['tokenType'].value}}"  >
           </ion-thumbnail>
           <ion-icon name='ios-arrow-forward' item-right></ion-icon>
         </ion-item>
@@ -33,7 +33,7 @@
           Token Numbers
           <ion-thumbnail item-left>
               <ion-input type="text" hidden formControlName="tokenNumbers"></ion-input>
-            <img src="{{srcTokenNumbers}}">
+            <img src="{{editKidForm.controls['tokenNumbers'].value}}">
           </ion-thumbnail>
           <ion-icon name='ios-arrow-forward' item-right></ion-icon>
         </ion-item>
@@ -41,7 +41,7 @@
             Select Your Monster
             <ion-thumbnail item-left>
                 <ion-input type="text" hidden formControlName="kidMonster"></ion-input>
-              <img src="{{kidMonster}}" >
+              <img src="{{editKidForm.controls['kidMonster'].value}}" >
             </ion-thumbnail>
             <ion-icon name='ios-arrow-forward' item-right></ion-icon>
           </ion-item>
