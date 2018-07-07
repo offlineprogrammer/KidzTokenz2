@@ -68,11 +68,12 @@ export class EditKidPage {
   }
 
   processForm() {
-    let oKid = this.editKidForm.value;
+    /* let oKid = this.editKidForm.value;
     let bValidKid = this.editKidForm.valid;
 
     console.log('editKidForm: ', oKid);
-    console.log('valid: ', bValidKid);
+    console.log('valid: ', oKid.kidId); */
+    this.oKid.name = this.editKidForm.controls["kidName"].value;
     this.dataService.updateKids()
     .then(() => { });
   }

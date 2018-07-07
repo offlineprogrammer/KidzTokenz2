@@ -177,6 +177,7 @@ export class DataServiceProvider {
       if (typeof this.kidzList === 'undefined') {
         this.kidzList = [];
       }
+      console.log('this.kidzList: ', this.kidzList);
       this.saveData(this.kidzList, this.KIDS_KEY);
       resolve('Done');
     }).catch((error) => {
