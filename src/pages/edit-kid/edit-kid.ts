@@ -76,6 +76,36 @@ export class EditKidPage {
     modal.present();
   }
 
+  selectTokenNumbers() {
+    let modal = this.modalController.create(TokennumbersPage, {
+      tokenNumbers: this.oKid.tokenNumbers
+    });
+    modal.onDidDismiss(data => {
+      
+
+      this.editKidForm.controls["srcTokenNumbers"].setValue('assets/tokennumbers/' + data.tokenNumbers + '.png');
+      this.editKidForm.controls["tokenNumbers"].setValue(data.tokenNumbers);
+      console.log('this.tokenNumbers: ',this.editKidForm.controls["tokenNumbers"].value);
+    });
+    modal.present();
+  }
+
+
+  selectToken() {
+    let modal = this.modalController.create(TokentypePage, {
+      selectedToken: this.oKid.tokenType
+    });
+    modal.onDidDismiss(data => {
+      this.editKidForm.controls["tokenType"].setValue(data.selectedToken);
+      console.log('this.tokenType: ',this.editKidForm.controls["tokenType"].value);
+    });
+    modal.present();
+  }
+
+  close() {
+    this.viewController.dismiss();
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditKidPage');
   }
@@ -88,8 +118,12 @@ export class EditKidPage {
     console.log('valid: ', oKid.kidId); */
     this.oKid.name = this.editKidForm.controls["kidName"].value;
     this.oKid.kidMonster = this.editKidForm.controls["kidMonster"].value;
+    this.oKid.tokenType = this.editKidForm.controls["tokenType"].value;
+    this.oKid.tokenNumbers = this.editKidForm.controls["tokenNumbers"].value;
+    this.oKid.srcTokenNumbers = this.editKidForm.controls["srcTokenNumbers"].value;
     this.dataService.updateKids()
-    .then(() => { });
+    .then(() => { this.close();});
+
   }
 
 
