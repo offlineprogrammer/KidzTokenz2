@@ -63,6 +63,19 @@ export class EditKidPage {
       });
   }
 
+  selectMonster() {
+    let modal = this.modalController.create(SelectMonsterPage, {
+      selectedMonster: this.oKid.kidMonster
+    });
+    modal.onDidDismiss(data => {
+      console.log('itemSelectedvv: ', data);
+      //this.kidMonster = data.selectedMonster;
+      this.editKidForm.controls["kidMonster"].setValue(data.selectedMonster);
+      console.log('this.kidMonster: ',this.editKidForm.controls["kidMonster"].value);
+    });
+    modal.present();
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditKidPage');
   }
@@ -74,6 +87,7 @@ export class EditKidPage {
     console.log('editKidForm: ', oKid);
     console.log('valid: ', oKid.kidId); */
     this.oKid.name = this.editKidForm.controls["kidName"].value;
+    this.oKid.kidMonster = this.editKidForm.controls["kidMonster"].value;
     this.dataService.updateKids()
     .then(() => { });
   }
