@@ -67,4 +67,16 @@ export class EditKidPage {
     console.log('ionViewDidLoad EditKidPage');
   }
 
+  processForm() {
+    let oKid = this.editKidForm.value;
+    let bValidKid = this.editKidForm.valid;
+
+    console.log('editKidForm: ', oKid);
+    console.log('valid: ', bValidKid);
+    this.dataService.updateKids()
+    .then(() => { });
+  }
+
+
+
 }
