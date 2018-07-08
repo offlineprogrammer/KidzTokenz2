@@ -23,6 +23,8 @@ import {
 import { AddTaskPage } from '../add-task/add-task';
 
 import { EditKidPage } from '../edit-kid/edit-kid';
+import { TaskInfoPage } from '../task-info/task-info';
+import { Task } from '../../models/task';
 
 /**
  * Generated class for the KidInfoPage page.
@@ -84,6 +86,12 @@ export class KidInfoPage {
   }
 
   
+  itemSelected(data: Task): void {
+
+    this.navCtrl.push(TaskInfoPage, {
+      task: data
+    });
+  }
 
 
   editKid(data: Kid): void {
