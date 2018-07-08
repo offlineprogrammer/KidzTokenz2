@@ -91,7 +91,7 @@ export class AddTaskPage {
             //this.trackEvent('PRTask', 'AddTask', newtask.name, 0);
           }
 
-        //  this.close();
+         this.close();
         });
     };
 
