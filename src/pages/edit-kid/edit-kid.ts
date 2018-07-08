@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {
+  Component
+} from '@angular/core';
 import {
   IonicPage,
   NavController,
@@ -31,6 +33,7 @@ import {
 } from '../tokennumbers/tokennumbers';
 
 
+
 /**
  * Generated class for the EditKidPage page.
  *
@@ -53,14 +56,14 @@ export class EditKidPage {
     public navParams: NavParams,
     private loadingCtrl: LoadingController,
     private dataService: DataServiceProvider) {
-      this.oKid = navParams.get('kid');
-      this.editKidForm = this.formBuilder.group({
-        kidName: [this.oKid.name, [Validators.required, Validators.minLength(2)]],
-        kidMonster: [this.oKid.kidMonster, [Validators.required, Validators.minLength(2)]],
-        tokenType: [this.oKid.tokenType, [Validators.required, Validators.minLength(2)]],
-        tokenNumbers: [this.oKid.tokenNumbers, [Validators.required]],
-        srcTokenNumbers:[this.oKid.srcTokenNumbers],
-      });
+    this.oKid = navParams.get('kid');
+    this.editKidForm = this.formBuilder.group({
+      kidName: [this.oKid.name, [Validators.required, Validators.minLength(2)]],
+      kidMonster: [this.oKid.kidMonster, [Validators.required, Validators.minLength(2)]],
+      tokenType: [this.oKid.tokenType, [Validators.required, Validators.minLength(2)]],
+      tokenNumbers: [this.oKid.tokenNumbers, [Validators.required]],
+      srcTokenNumbers: [this.oKid.srcTokenNumbers],
+    });
   }
 
   selectMonster() {
@@ -71,7 +74,7 @@ export class EditKidPage {
       console.log('itemSelectedvv: ', data);
       //this.kidMonster = data.selectedMonster;
       this.editKidForm.controls["kidMonster"].setValue(data.selectedMonster);
-      console.log('this.kidMonster: ',this.editKidForm.controls["kidMonster"].value);
+      console.log('this.kidMonster: ', this.editKidForm.controls["kidMonster"].value);
     });
     modal.present();
   }
@@ -81,11 +84,11 @@ export class EditKidPage {
       tokenNumbers: this.oKid.tokenNumbers
     });
     modal.onDidDismiss(data => {
-      
+
 
       this.editKidForm.controls["srcTokenNumbers"].setValue('assets/tokennumbers/' + data.tokenNumbers + '.png');
       this.editKidForm.controls["tokenNumbers"].setValue(data.tokenNumbers);
-      console.log('this.tokenNumbers: ',this.editKidForm.controls["tokenNumbers"].value);
+      console.log('this.tokenNumbers: ', this.editKidForm.controls["tokenNumbers"].value);
     });
     modal.present();
   }
@@ -97,7 +100,7 @@ export class EditKidPage {
     });
     modal.onDidDismiss(data => {
       this.editKidForm.controls["tokenType"].setValue(data.selectedToken);
-      console.log('this.tokenType: ',this.editKidForm.controls["tokenType"].value);
+      console.log('this.tokenType: ', this.editKidForm.controls["tokenType"].value);
     });
     modal.present();
   }
@@ -122,7 +125,9 @@ export class EditKidPage {
     this.oKid.tokenNumbers = this.editKidForm.controls["tokenNumbers"].value;
     this.oKid.srcTokenNumbers = this.editKidForm.controls["srcTokenNumbers"].value;
     this.dataService.updateKids()
-    .then(() => { this.close();});
+      .then(() => {
+        this.close();
+      });
 
   }
 

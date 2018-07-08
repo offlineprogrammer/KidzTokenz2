@@ -57,6 +57,9 @@ export class KidInfoPage {
       });
   }
 
+  
+
+
   editKid(data: Kid): void {
 
     this.navCtrl.push(EditKidPage, {
