@@ -14,6 +14,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 import { AddPointsPage } from '../pages/add-points/add-points';
 import { KidInfoPage } from '../pages/kid-info/kid-info';
 import { EditKidPage } from '../pages/edit-kid/edit-kid';
+import { AddTaskPage } from '../pages/add-task/add-task';
 import { TokentypePage } from '../pages/tokentype/tokentype';
 import { TokennumbersPage } from '../pages/tokennumbers/tokennumbers';
 import { SelectMonsterPage } from '../pages/select-monster/select-monster';
@@ -32,6 +33,7 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     KidInfoPage,
     TokentypePage,
     EditKidPage,
+    AddTaskPage,
     TokennumbersPage
   ],
   imports: [
@@ -55,6 +57,7 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     KidInfoPage,
     TokentypePage,
     EditKidPage,
+    AddTaskPage,
     TokennumbersPage,
     SelectMonsterPage
   ],

@@ -5,7 +5,7 @@ import {
   IonicPage,
   NavController,
   ModalController,
-  NavParams,AlertController
+  NavParams,AlertController,LoadingController
 } from 'ionic-angular';
 import {
   Kid
@@ -20,6 +20,7 @@ import {
 import {
   TokentypePage
 } from '../tokentype/tokentype';
+import { AddTaskPage } from '../add-task/add-task';
 
 import { EditKidPage } from '../edit-kid/edit-kid';
 
@@ -38,7 +39,8 @@ import { EditKidPage } from '../edit-kid/edit-kid';
 export class KidInfoPage {
   oKid: Kid;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataServiceProvider, private modalController: ModalController,private alertCtrl: AlertController ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataServiceProvider, 
+    private modalController: ModalController,private alertCtrl: AlertController, private loadingCtrl: LoadingController ) {
     this.oKid = navParams.get('kid');
     console.log(this.oKid);
   }
@@ -120,7 +122,7 @@ export class KidInfoPage {
   }
 
   addNewTask(data: any): void {
-    let modal = this.modalController.create(AddTaskModal, { 'kid': this.oKid });
+    let modal = this.modalController.create(AddTaskPage, { 'kid': this.oKid });
     modal.onDidDismiss(data => {
       let loader = this.loadingCtrl.create({
         content: "Please wait..."
