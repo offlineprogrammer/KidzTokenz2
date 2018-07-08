@@ -11,6 +11,9 @@ import {
   Kid
 } from '../../models/kid';
 import {
+  Task
+} from '../../models/task';
+import {
   Storage
 } from '@ionic/storage';
 
@@ -179,6 +182,56 @@ export class DataServiceProvider {
       }
       console.log('this.kidzList: ', this.kidzList);
       this.saveData(this.kidzList, this.KIDS_KEY);
+      resolve('Done');
+    }).catch((error) => {
+      //this.logError(error);
+      // reject('Only available on a device');
+    });
+  }
+
+  creatTask(data: Kid, taskData: Task, taskPicture): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (this.userData.isGuestUser) {
+        data.tasks.push(taskData);
+        data.tasksCount += 1;
+        this.saveData(this.kidzList, this.KIDS_KEY);
+      }
+      else {
+        var adaRef = this.kidzList.child(data.kidId);
+        if (taskPicture != null) {
+          this.kidzPhotosRef.child(data.kidId).child(taskData.taskId)
+            .putString(taskPicture, 'base64', { contentType: 'image/png' })
+            .then((savedPicture) => {
+              taskData.taskPhoto = savedPicture.downloadURL;
+              taskData.taskimage = "";
+              data.tasks.push(taskData);
+              data.tasksCount += 1;
+              adaRef.child('tasks').set(data.tasks).then(function () {
+                adaRef.child('tasksCount').set(data.tasksCount)
+                adaRef.child('tasks').set(data.tasks)
+                console.log(" succeeded.")
+              })
+                .catch(function (error) {
+                  console.log(" failed: " + error.message)
+                });
+            });
+        } else {
+           console.log(" no image.")
+           taskData.taskimage = "";
+          data.tasks.push(taskData);
+          data.tasksCount += 1;
+          adaRef.child('tasks').set(data.tasks).then(function () {
+            adaRef.child('tasksCount').set(data.tasksCount)
+            adaRef.child('tasks').set(data.tasks)
+            console.log(" succeeded.")
+          })
+            .catch(function (error) {
+              console.log(" failed: " + error.message)
+            });
+
+        }
+
+      }
       resolve('Done');
     }).catch((error) => {
       //this.logError(error);

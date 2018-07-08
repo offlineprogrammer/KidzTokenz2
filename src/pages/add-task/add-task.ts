@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
 import {
   FormBuilder,
   FormGroup,
@@ -30,17 +30,72 @@ import {
 export class AddTaskPage {
   oKid: Kid;
   form: FormGroup;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,) {
+  taskPicture: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,private viewController: ViewController,private dataService: DataServiceProvider) {
     this.oKid = navParams.get('kid');
     this.form = this.formBuilder.group({
       taskName: ['', Validators.required],
       negReinforcement: [false, Validators.required],
 
     });
+    this.taskPicture=null;
+  }
+
+  close() {
+    this.viewController.dismiss();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddTaskPage');
+  }
+
+
+  private generateUUID(): any {
+    var d = new Date().getTime();
+
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
+      var r = (d + Math.random() * 16) % 16 | 0;
+      d = Math.floor(d / 16);
+      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+
+    return uuid;
+  }
+
+
+
+  processForm() {
+
+    let newtask: Task;
+    newtask = {
+      taskId: this.generateUUID(),
+      kidId: this.oKid.kidId,
+      name: this.form.controls["taskName"].value,
+      score: 0,
+      taskimage: '',
+      negativeReinforcement: this.form.controls["negReinforcement"].value,
+      taskPhoto: '',
+
+    };
+    if (this.form.status === 'VALID') {
+       if (typeof this.oKid.tasks === 'undefined') {
+          this.oKid.tasks = [];
+        }
+      // this.oChild.tasks.push(newtask);
+      // this.oChild.tasksCount += 1;
+      this.dataService.creatTask(this.oKid, newtask, this.taskPicture)
+        .then(() => {
+          if (newtask.negativeReinforcement) {
+            //this.trackEvent('NRTask', 'AddTask', newtask.name, 0);
+          } else {
+            //this.trackEvent('PRTask', 'AddTask', newtask.name, 0);
+          }
+
+        //  this.close();
+        });
+    };
+
+
   }
 
 }
