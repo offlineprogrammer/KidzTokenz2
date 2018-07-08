@@ -119,4 +119,20 @@ export class KidInfoPage {
         .then(() => { });
   }
 
+  addNewTask(data: any): void {
+    let modal = this.modalController.create(AddTaskModal, { 'kid': this.oKid });
+    modal.onDidDismiss(data => {
+      let loader = this.loadingCtrl.create({
+        content: "Please wait..."
+      });
+      loader.present();
+      setTimeout(() => {
+        loader.dismiss();
+      }, 2000);
+
+    });
+    modal.present();
+
+  }
+
 }
