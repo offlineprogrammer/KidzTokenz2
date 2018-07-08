@@ -54,8 +54,8 @@
       <ion-list>
         <ion-item *ngFor="let item of oKid.tasks" (click)="itemSelected(item)" class="child-item">
           <ion-thumbnail item-left>
-            <img *ngIf="isGuestUser" src="{{item.taskimage}}">
-            <img *ngIf="!isGuestUser" src="{{item.taskPhoto}}">
+            <img src="{{item.taskimage}}">
+          
           </ion-thumbnail>
           <h2>
             {{item.name}}

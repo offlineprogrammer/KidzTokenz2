@@ -72,7 +72,7 @@ export class AddTaskPage {
       kidId: this.oKid.kidId,
       name: this.form.controls["taskName"].value,
       score: 0,
-      taskimage: '',
+      taskimage: 'assets/imgs/gift.png',
       negativeReinforcement: this.form.controls["negReinforcement"].value,
       taskPhoto: '',
 
