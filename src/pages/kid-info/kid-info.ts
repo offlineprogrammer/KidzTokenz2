@@ -5,7 +5,7 @@ import {
   IonicPage,
   NavController,
   ModalController,
-  NavParams,
+  NavParams,AlertController
 } from 'ionic-angular';
 import {
   Kid
@@ -38,7 +38,7 @@ import { EditKidPage } from '../edit-kid/edit-kid';
 export class KidInfoPage {
   oKid: Kid;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataServiceProvider, private modalController: ModalController, ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataServiceProvider, private modalController: ModalController,private alertCtrl: AlertController ) {
     this.oKid = navParams.get('kid');
     console.log(this.oKid);
   }
@@ -47,14 +47,38 @@ export class KidInfoPage {
     console.log('ionViewDidLoad KidInfoPage');
   }
 
-  deleteKid(data: Kid): void {
 
-    this.dataService.deleteKid(data)
-      .then(() => {
-        //  this.trackEvent('ChildInfo', 'deleteChild', '', 0);
-        //  this.events.publish('child:deleted');
-        this.navCtrl.pop();
-      });
+
+
+  deleteKid(data: Kid): void {
+ let alert = this.alertCtrl.create({
+    title: 'Confirm Deletion',
+    message: 'Are you sure you want to permanently remove this?',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Yes',
+        handler: () => {
+          console.log('Yes clicked');
+          this.dataService.deleteKid(data)
+          .then(() => {
+            //  this.trackEvent('ChildInfo', 'deleteChild', '', 0);
+            //  this.events.publish('child:deleted');
+            this.navCtrl.pop();
+          });
+        }
+      }
+    ]
+  });
+  alert.present();
+
+
   }
 
   
