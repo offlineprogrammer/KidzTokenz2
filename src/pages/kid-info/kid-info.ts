@@ -89,7 +89,8 @@ export class KidInfoPage {
   itemSelected(data: Task): void {
 
     this.navCtrl.push(TaskInfoPage, {
-      task: data
+      task: data,
+      kid:this.oKid
     });
   }
 

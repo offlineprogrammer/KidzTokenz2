@@ -189,6 +189,28 @@ export class DataServiceProvider {
     });
   }
 
+  updateTasks(data: Kid): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (this.userData.isGuestUser) {
+        this.saveData(this.kidzList, this.KIDS_KEY);
+      }
+      else {
+        var adaRef = this.kidzList.child(data.kidId);
+        adaRef.child('tasks').set(data.tasks).then(function () {
+          adaRef.child('tasksCount').set(data.tasksCount)
+          console.log(" succeeded.")
+        })
+          .catch(function (error) {
+            console.log(" failed: " + error.message)
+          });
+      }
+      resolve('Done');
+    }).catch((error) => {
+      //this.logError(error);
+      // reject('Only available on a device');
+    });
+  }
+
   creatTask(data: Kid, taskData: Task, taskPicture): Promise<any> {
     return new Promise((resolve, reject) => {
       if (this.userData.isGuestUser) {
