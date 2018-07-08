@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import {
   DataServiceProvider
 } from '../../providers/data-service/data-service';
@@ -28,7 +28,7 @@ export class TaskInfoPage {
   oKid: Kid;
   tokenNumbers: number[];
   tokenstriples: number[];
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController,
     private dataService: DataServiceProvider) {
       this.oTask = navParams.get('task');
       this.oKid= navParams.get('kid');
@@ -111,6 +111,48 @@ export class TaskInfoPage {
       this.trackEvent('PRTask', 'resetScore', this.oTask.name, this.oTask.score);
     }
   }
+
+  deleteTask(data: Task): void {
+
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Deletion',
+      message: 'Are you sure you want to permanently remove this?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes clicked');
+
+            let index = this.oKid.tasks.indexOf(data);
+
+            if (index > -1) {
+              this.oKid.tasks.splice(index, 1);
+              this.oKid.tasksCount -= 1;
+              if (data.negativeReinforcement) {
+                this.trackEvent('NRTask', 'deleteTask', data.name, data.score);
+              } else {
+                this.trackEvent('PRTask', 'deleteTask', data.name, data.score);
+              }
+            }
+            this.updateData();
+        
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    alert.present();
+
+
+  }
+
 
   trackEvent(sCategory: string,
     sAction: string,
