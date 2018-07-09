@@ -21,6 +21,8 @@ import { TokennumbersPage } from '../pages/tokennumbers/tokennumbers';
 import { SelectMonsterPage } from '../pages/select-monster/select-monster';
 
 
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Screenshot } from '@ionic-native/screenshot';
 
 
 @NgModule({
@@ -69,6 +71,8 @@ import { SelectMonsterPage } from '../pages/select-monster/select-monster';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserDataProvider,
+    SocialSharing,
+    Screenshot,
     DataServiceProvider
   ]
 })

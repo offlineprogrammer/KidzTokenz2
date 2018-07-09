@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,Platform } from 'ionic-angular';
 import {
   DataServiceProvider
 } from '../../providers/data-service/data-service';
@@ -9,6 +9,8 @@ import {
 import {
   Task
 } from '../../models/task';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Screenshot } from '@ionic-native/screenshot';
 
 
 /**
@@ -28,12 +30,41 @@ export class TaskInfoPage {
   oKid: Kid;
   tokenNumbers: number[];
   tokenstriples: number[];
-  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController,
+   sTaskscreen: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController,private platform: Platform,
+    private screenshot: Screenshot,
+    private socialSharing: SocialSharing,
     private dataService: DataServiceProvider) {
       this.oTask = navParams.get('task');
       this.oKid= navParams.get('kid');
       this.tokenNumbers = this.fillArrayWithNumbers(+this.oKid.tokenNumbers);
     this.tokenstriples = this.getTriples();
+  }
+
+  doSocialSharing() {
+    this.platform.ready().then(() => {
+      let shareMessage: string = this.oKid.tokenNumbers.toString() + ' tokenz for ' + this.oKid.name + ' :) time for  ' + this.oTask.name;
+
+      this.screenshot.URI(80)
+        .then((res) => {
+          console.log(res);
+          this.sTaskscreen = res.URI;
+         this.socialSharing.share(shareMessage, null, this.sTaskscreen, null)
+            .then(() => {
+              if (this.oTask.negativeReinforcement) {
+                this.trackEvent('NRTask', 'SocialSharing', this.oTask.name, 0);
+              } else {
+                this.trackEvent('PRTask', 'SocialSharing', this.oTask.name, 0);
+              }
+            },
+            () => {
+              // this.logError('Facebook Sharing Failed');
+            });
+        },
+        () => {
+          // this.logError('Screenshot capture Failed');
+        });
+    });
   }
 
 
