@@ -10,9 +10,6 @@ import {
   AddKidPage
 } from '../add-kid/add-kid';
 import {
-  AddPointsPage
-} from '../add-points/add-points';
-import {
   KidInfoPage
 } from '../kid-info/kid-info';
 import {

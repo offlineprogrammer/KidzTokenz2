@@ -9,9 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { AddKidPage } from '../pages/add-kid/add-kid';
 import { UserDataProvider } from '../providers/user-data/user-data';
 import { IonicStorageModule } from '@ionic/storage';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { DataServiceProvider } from '../providers/data-service/data-service';
-import { AddPointsPage } from '../pages/add-points/add-points';
 import { KidInfoPage } from '../pages/kid-info/kid-info';
 import { EditKidPage } from '../pages/edit-kid/edit-kid';
 import { AddTaskPage } from '../pages/add-task/add-task';
@@ -31,7 +30,6 @@ import { Screenshot } from '@ionic-native/screenshot';
     HomePage,
     LoginPage,
     AddKidPage,
-    AddPointsPage,
     SelectMonsterPage,
     KidInfoPage,
     TokentypePage,
@@ -58,7 +56,6 @@ import { Screenshot } from '@ionic-native/screenshot';
     HomePage,
     LoginPage,
     AddKidPage,
-    AddPointsPage,
     KidInfoPage,
     TokentypePage,
     EditKidPage,
