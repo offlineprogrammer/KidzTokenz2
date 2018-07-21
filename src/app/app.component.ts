@@ -3,10 +3,9 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
-import { AddKidPage } from '../pages/add-kid/add-kid';
 import { HomePage } from '../pages/home/home';
 import { UserDataProvider } from '../providers/user-data/user-data';
-//import { AddPointsPage } from '../pages/add-points/add-points';
+
 
 @Component({
   templateUrl: 'app.html'

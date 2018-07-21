@@ -19,7 +19,7 @@ import { TaskInfoPage } from '../pages/task-info/task-info';
 import { TokentypePage } from '../pages/tokentype/tokentype';
 import { TokennumbersPage } from '../pages/tokennumbers/tokennumbers';
 import { SelectMonsterPage } from '../pages/select-monster/select-monster';
-
+import { AppInfoPage } from '../pages/app-info/app-info';
 
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
@@ -38,6 +38,7 @@ import { Screenshot } from '@ionic-native/screenshot';
     EditKidPage,
     AddTaskPage,
     TaskInfoPage,
+    AppInfoPage,
     TokennumbersPage
   ],
   imports: [
@@ -64,6 +65,7 @@ import { Screenshot } from '@ionic-native/screenshot';
     AddTaskPage,
     TokennumbersPage,
     TaskInfoPage,
+    AppInfoPage,
     SelectMonsterPage
   ],
   providers: [
