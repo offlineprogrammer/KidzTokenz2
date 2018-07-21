@@ -16,6 +16,9 @@ import {
   KidInfoPage
 } from '../kid-info/kid-info';
 import {
+  AppInfoPage
+} from '../app-info/app-info';
+import {
   DataServiceProvider
 } from '../../providers/data-service/data-service';
 import {
@@ -50,6 +53,11 @@ export class HomePage {
       kid: data
     });
 
+  }
+
+  showInfo(): void {
+    let modal = this.modalController.create(AppInfoPage);
+    modal.present();
   }
 
   addNewKid(): void {
