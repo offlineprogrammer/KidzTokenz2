@@ -148,7 +148,7 @@ export class AddKidPage {
       positives: 0,
       negatives: 0,
       tokenType: oKid.tokenType,
-      negativetokenType: '',
+      negativetokenType: this.tokenType.replace('assets/tokentypes/', 'assets/tokentypes/bad-'),
       tokenNumbers: oKid.tokenNumbers,
       srcTokenNumbers: 'assets/tokennumbers/' + oKid.tokenNumbers + '.png',
       tasksCount: 0,
