@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController} from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { UserDataProvider } from '../../providers/user-data/user-data';
 
@@ -17,12 +17,40 @@ import { UserDataProvider } from '../../providers/user-data/user-data';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private userData: UserDataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private userData: UserDataProvider, private loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
+
+  // facebookLogin() {
+  //   let loader = this.loadingCtrl.create({
+  //     content: "Please wait..."
+  //   });
+  //   loader.present();
+  //   Facebook.login(['email']).then((response) => {
+
+
+  //     this.authData.loginUser(response.authResponse.accessToken)
+  //       .then(response => {
+  //         console.log('test');
+  //         loader.dismiss();
+  //    //     this.navCtrl.push(HomePage, {});
+  //         this.userData.setGuestUser(false);
+  //         this.gaService.setUserType(false);
+  //         this.navCtrl.setRoot(HomePage, {});
+
+  //       }, function (error) {
+  //         loader.dismiss();
+  //         console.log(error);
+  //       });
+
+
+
+  //   }).catch((error) => { loader.dismiss(); console.log(error) });
+  // }
+
 
   contineAsGuest() {
     this.userData.setGuestUser(true);
