@@ -17,9 +17,12 @@ export class AuthDataProvider {
   public isGuestUser: boolean;
 
   loginUser(accessToken: string): any {
+    console.log('ionic: loginUser');
+    console.log('ionic: Token ' + accessToken);
           let facebookCredential = firebase.auth.FacebookAuthProvider
                     .credential(accessToken);
                     console.log("Firebase  ");
+                    console.log('ionic: facebookCredential ' + facebookCredential);
         return this.fireAuth.signInWithCredential(facebookCredential)
     }
 

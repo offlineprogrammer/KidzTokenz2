@@ -44,6 +44,7 @@ export class LoginPage {
         this.navCtrl.setRoot(HomePage, {});
 
       }, function (error) {
+        console.log('ionic: Error ' + error);
         loader.dismiss();
         console.log(error);
       });
