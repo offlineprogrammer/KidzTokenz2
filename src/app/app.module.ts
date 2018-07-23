@@ -23,6 +23,7 @@ import { AppInfoPage } from '../pages/app-info/app-info';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
 import { Facebook } from '@ionic-native/facebook';
+import { AuthDataProvider } from '../providers/auth-data/auth-data';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { Facebook } from '@ionic-native/facebook';
     SocialSharing,
     Screenshot,
     Facebook,
-    DataServiceProvider
+    DataServiceProvider,
+    AuthDataProvider
   ]
 })
 export class AppModule {}

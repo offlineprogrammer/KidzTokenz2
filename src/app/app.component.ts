@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { UserDataProvider } from '../providers/user-data/user-data';
+import firebase from 'firebase';
 
 
 @Component({
@@ -21,12 +22,13 @@ export class KidzPointZ {
         if (userData.isGuestUser) {
           this.rootPage = HomePage;
         } else {
-/*           firebase.initializeApp({
-            apiKey: "AIzaSyCh4LNH_Srbq7LXCC8QRUnz2BiodEvK5MQ",
-            authDomain: "kidztokenz.firebaseapp.com",
-            databaseURL: "https://kidztokenz.firebaseio.com",
-            storageBucket: "kidztokenz.appspot.com",
-            messagingSenderId: "910876779586"
+           firebase.initializeApp({
+            apiKey: "AIzaSyDcMnq_Xaapjdskm2_IBLyOdDt3Z9v4tXc",
+            authDomain: "kidztokenztest.firebaseapp.com",
+            databaseURL: "https://kidztokenztest.firebaseio.com",
+            projectId: "kidztokenztest",
+            storageBucket: "kidztokenztest.appspot.com",
+            messagingSenderId: "263375574643"
           });
           const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
             this.zone.run(() => {
@@ -38,7 +40,7 @@ export class KidzPointZ {
                 unsubscribe();
               }
             });
-          }); */
+          }); 
         }
       }); 
    
