@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController} from 'ionic-ang
 import { HomePage } from '../home/home';
 import { UserDataProvider } from '../../providers/user-data/user-data';
 import { Facebook } from '@ionic-native/facebook';
+import { AuthDataProvider } from '../../providers/auth-data/auth-data';
 
 /**
  * Generated class for the LoginPage page.
@@ -18,7 +19,7 @@ import { Facebook } from '@ionic-native/facebook';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private userData: UserDataProvider, private loadingCtrl: LoadingController,private fb: Facebook) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authData: AuthDataProvider,private userData: UserDataProvider, private loadingCtrl: LoadingController,private fb: Facebook) {
   }
 
   ionViewDidLoad() {
@@ -33,6 +34,19 @@ export class LoginPage {
     this.fb.login(['email']).then((response) => {
 
       console.log("logged in");
+      this.authData.loginUser(response.authResponse.accessToken)
+      .then(response => {
+        console.log('test');
+        loader.dismiss();
+   //     this.navCtrl.push(HomePage, {});
+        this.userData.setGuestUser(false);
+      //  this.gaService.setUserType(false);
+        this.navCtrl.setRoot(HomePage, {});
+
+      }, function (error) {
+        loader.dismiss();
+        console.log(error);
+      });
 
 
 

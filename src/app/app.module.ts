@@ -76,6 +76,7 @@ import { AuthDataProvider } from '../providers/auth-data/auth-data';
     Screenshot,
     Facebook,
     DataServiceProvider,
+    AuthDataProvider,
     AuthDataProvider
   ]
 })
